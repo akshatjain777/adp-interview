@@ -93,6 +93,9 @@ const getLastYearsTopEarner = (transactions) => {
 // IIFE function to run function on npm-start
 (async () => {
   // Fetching transactions from ADP API
+  console.log(
+    `======================== Fetching transactions from ADP API (GET) ========================`
+  );
   const transactions = await callAPI('GET', `${ADP_API}/get-task`);
   if (!transactions) {
     // If any error while fetching transaction, log and exit out of function
@@ -100,6 +103,9 @@ const getLastYearsTopEarner = (transactions) => {
     return;
   }
   // Filtering top earner's transactions
+  console.log(
+    `========================= Filtering Transactions for top earners =========================`
+  );
   const topEarnerTransactions = getLastYearsTopEarner(
     transactions.transactions
   );
@@ -119,5 +125,7 @@ const getLastYearsTopEarner = (transactions) => {
     return;
   }
   // Logging ADP Response
-  console.log(submitResults);
+  console.log(
+    `====================== ADP Submission Response Data (POST): ${submitResults} ======================`
+  );
 })();
